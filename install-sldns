@@ -2,7 +2,7 @@
 # Script By SL
 # 2022 SLOWDNS
 # ===============================================
-wget https://raw.githubusercontent.com/arismaramar/sldns/main/slowdns/arzhostdns.sh && chmod +x arzhostdns.sh && ./arzhostdns.sh
+wget https://raw.githubusercontent.com/arismaramar/sldns/main/arzhostdns.sh && chmod +x arzhostdns.sh && ./arzhostdns.sh
 nameserver=$(cat /root/nsdomain)
 apt update -y
 apt install -y python3 python3-dnslib net-tools
