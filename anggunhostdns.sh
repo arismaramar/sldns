@@ -9,8 +9,8 @@ rm nsdomain
 
 sub=$(</dev/urandom tr -dc a-z0-9 | head -c5)
 subsl=$(</dev/urandom tr -dc a-x0-9 | head -c5)
-DOMAIN=remoot.shop
-SUB_DOMAIN=${sub}.remoot.shop
+DOMAIN=remoot.my.id
+SUB_DOMAIN=${sub}.remoot.my.id
 NS_DOMAIN=ns-${subsl}.remoot.shop
 CF_ID=arismar.amar@gmail.com
 CF_KEY=f7fa85e2472592639b7d1cf82f1c5490ec1cd
