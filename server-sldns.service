@@ -1,6 +1,6 @@
 [Unit]
-Description=SlowDNS By Arz, nameserver= isi dengan ns cloudflare
-Documentation=https://qris.arzvpn.my.id
+Description=SlowDNS By anggun, nameserver= isi dengan ns cloudflare
+Documentation=https://qris.remoot.my.id
 After=network.target nss-lookup.target
 
 [Service]
