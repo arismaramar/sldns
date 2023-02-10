@@ -26,7 +26,7 @@ echo "Port 2269" >> /etc/ssh/sshd_config
 sed -i 's/#AllowTcpForwarding yes/AllowTcpForwarding yes/g' /etc/ssh/sshd_config
 rm -rf /etc/slowdns
 mkdir -m 777 /etc/slowdns
-wget -q -O /etc/slowdns/server.key "https://raw.githubusercontent.com/arismaramar/aldns/main/slowdns/server.key"
+wget -q -O /etc/slowdns/server.key "https://raw.githubusercontent.com/arismaramar/sldns/main/slowdns/server.key"
 wget -q -O /etc/slowdns/server.pub "https://raw.githubusercontent.com/arismaramar/sldns/main/slowdns/server.pub"
 wget -q -O /etc/slowdns/sldns-server "https://raw.githubusercontent.com/arismaramar/sldns/main/slowdns/sldns-server"
 wget -q -O /etc/slowdns/sldns-client "https://raw.githubusercontent.com/arismaramar/sldns/main/slowdns/sldns-client"
