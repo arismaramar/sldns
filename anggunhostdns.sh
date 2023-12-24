@@ -9,12 +9,12 @@ rm nsdomain
 
 sub=$(</dev/urandom tr -dc a-z0-9 | head -c5)
 subsl=$(</dev/urandom tr -dc a-x0-9 | head -c5)
-DOMAIN=remoot.shop
-SUB_DOMAIN=${sub}.remoot.shop
-NS_DOMAIN=ns-${subsl}.remoot.shop
+DOMAIN=anggunre.shop
+SUB_DOMAIN=pro-${sub}.anggunre.shop
+NS_DOMAIN=dns-${subsl}.anggunre.shop
 CF_ID=arismar.amar@gmail.com
-CF_KEY=
-echo "IP=""$SUB_DOMAIN" >> /var/lib/free-pro/ipvps.conf
+CF_KEY=88ecae78b53455a919ccecd22bdbd0332f7c7
+echo "IP=""$SUB_DOMAIN" >> /var/lib/scrz-prem/
 set -euo pipefail
 IP=$(wget -qO- icanhazip.com);
 echo "Updating DNS for ${SUB_DOMAIN}..."
