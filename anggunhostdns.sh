@@ -14,7 +14,7 @@ SUB_DOMAIN=pro-${sub}.anggunre.shop
 NS_DOMAIN=dns-${subsl}.anggunre.shop
 CF_ID=arismar.amar@gmail.com
 CF_KEY=88ecae78b53455a919ccecd22bdbd0332f7c7
-echo "IP=""$SUB_DOMAIN" >> /var/lib/scrz-prem/
+echo "IP=""$SUB_DOMAIN" >> /var/lib/scrz-prem/ipvps.conf
 set -euo pipefail
 IP=$(wget -qO- icanhazip.com);
 echo "Updating DNS for ${SUB_DOMAIN}..."
