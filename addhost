@@ -116,7 +116,7 @@ cloudflare_vpnpro() {
     ns_domain_cloudflare_vpnpro
 }
 
-cloudflare_vpnpro() {
+cloudflare_anggunre() {
 	echo -e "   [${ORANGE}INFO${NC}] ${CYAN}Proses ke anggunre.shop${NC} "
     wget https://raw.githubusercontent.com/arismaramar/sldns/main/cf2.sh  >/dev/null 2>&1 && chmod +x cf2.sh && ./cf2.sh >/dev/null 2>&1
     ns_domain_cloudflare_anggunre
