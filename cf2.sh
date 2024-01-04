@@ -1,17 +1,6 @@
 #!/bin/bash
 # // font color configuration
-RED='\033[0;31m'
-NC='\033[0m'
-GREEN='\033[0;32m'
-ORANGE='\033[0;33m'
-BLUE='\033[0;34m'
-PURPLE='\033[0;35m'
-CYAN='\033[0;36m'
-LIGHT='\033[0;37m'
-Font="\033[0m"
-gray="\e[1;30m"
-total_ram=$(grep "MemTotal: " /proc/meminfo | awk '{ print $2}')
-totalram=$(($total_ram / 1024))
+
 MYIP=$(curl -sS ipv4.icanhazip.com)
 LAST_DOMAIN="$(cat /etc/xray/domain)"
 NS="$(cat /etc/xray/dns)"
@@ -102,29 +91,4 @@ cloudflare() {
 }
 
 clear
-echo -e " ┌─────────────────────────────────────────────────────────┐"
-echo -e "─│                        ${CYAN}WELCOME TO${NC}                       │─"
-echo -e "─│    ${ORANGE}┌─┐┬ ┬┌┬┐┌─┐┌─┐┌─┐┬─┐┬┌─┐┌┬┐  ┌─┐┬─┐┌─┐┌┬┐┬┬ ┬┌┬┐${NC}    │─"
-echo -e "─│    ${ORANGE}├─┤│ │ │ │ │└─┐│  ├┬┘│├─┘ │   ├─┘├┬┘├┤ │││││ ││││${NC}    │─"
-echo -e "─│    ${ORANGE}┴ ┴└─┘ ┴ └─┘└─┘└─┘┴└─┴┴   ┴   ┴  ┴└─└─┘┴ ┴┴└─┘┴ ┴${NC}    │─"
-echo -e "─│        ${RED}POWERRED ANGGUN${NC} | ${GREEN}TELEGRAM: @amantubilah${NC}       │─"
-echo -e " └─────────────────────────────────────────────────────────┘"
-echo -e "─────────────────────────────────────────────────────────────
-              ${CYAN}Hostname${NC}     :  ${ORANGE}$LAST_DOMAIN${NC}
-              ${CYAN}Public IP${NC}    :  ${ORANGE}$MYIP${NC}
-              ${CYAN}Total RAM${NC}    :  ${ORANGE}$totalram MB${NC}
-─────────────────────────────────────────────────────────────"
-echo -e "  ${CYAN}[1]${NC} ${RED}•${NC} ponting domain anggunre.shop"
-echo -e "  ${CYAN}[2]${NC} ${RED}•${NC} Kembali Ke Menu"
-echo -e "─────────────────────────────────────────────────────────────"
-read -p "Silahkan masukkan pilihan anda [1-2] : " NUM_MENU
 
-case $NUM_MENU in
-1)
-    cloudflare
-    ;;
-2)
-    menu
-    ;;
-*)
-esac
