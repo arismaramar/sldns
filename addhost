@@ -15,7 +15,6 @@ totalram=$(($total_ram / 1024))
 MYIP=$(curl -sS ipv4.icanhazip.com)
 LAST_DOMAIN="$(cat /etc/xray/domain)"
 NS="$(cat /etc/xray/dns)"
-NSVPSKU=$(cat /etc/xray/dns)
 red() { echo -e "\\033[32;1m${*}\\033[0m"; }
 clear
 
@@ -27,15 +26,15 @@ function get_acme_domain() {
     echo -e "─│    ${ORANGE}┌─┐┬ ┬┌┬┐┌─┐┌─┐┌─┐┬─┐┬┌─┐┌┬┐  ┌─┐┬─┐┌─┐┌┬┐┬┬ ┬┌┬┐${NC}    │─"
     echo -e "─│    ${ORANGE}├─┤│ │ │ │ │└─┐│  ├┬┘│├─┘ │   ├─┘├┬┘├┤ │││││ ││││${NC}    │─"
     echo -e "─│    ${ORANGE}┴ ┴└─┘ ┴ └─┘└─┘└─┘┴└─┴┴   ┴   ┴  ┴└─└─┘┴ ┴┴└─┘┴ ┴${NC}    │─"
-    echo -e "─│        ${RED}POWERRED ANGGUN${NC} | ${GREEN}TELEGRAM: @amantubilah${NC}       │─"
+    echo -e "─│        ${RED}ANGGUN_TUNNEL${NC} | ${GREEN}TELEGRAM: @amantubilah${NC}       │─"
     echo -e " └─────────────────────────────────────────────────────────┘"
     echo -e "─────────────────────────────────────────────────────────────"
     echo -e "               ${GREEN}PROSES GANTI DOMAIN & NS-DOMAIN${NC}"
     echo -e "─────────────────────────────────────────────────────────────"
     echo -e "   [${ORANGE}INFO${NC}] ${CYAN}Proses sedang berlangsung${NC} "
     systemctl stop nginx
-    systemctl stop haproxy
 	systemctl stop xray
+    systemctl stop haproxy
     sleep 2
     echo -e "   [${ORANGE}INFO${NC}] ${CYAN}Memperbarui semua sertifikat${NC}"
     sleep 2
@@ -80,8 +79,12 @@ function get_acme_domain() {
     echo -e "   [${ORANGE}INFO${NC}] ${CYAN}Proses pointing NS-Domain${NC} "
     sleep 3
 }
-ns_domain_cloudflare_vpnpro() {
+ns_domain_cloudflare() {
+    wget https://raw.githubusercontent.com/arismaramar/sldns/main/cfnvpnpro.sh >/dev/null 2>&1 && chmod +x cfnvpnpro.sh && ./cfnvpnpro.sh >/dev/null 2>&1
+    NSVPSKU=$(cat /etc/xray/dns)
     sleep 3
+    sed -i "s/$NS/$NSVPSKU/g" /etc/systemd/system/client.service >/dev/null 2>&1
+    sed -i "s/$NS/$NSVPSKU/g" /etc/systemd/system/server.service >/dev/null 2>&1
     echo -e "   [${ORANGE}DONE${NC}] ${CYAN}Domain kamu sekarang${NC} [${ORANGE}$baru${NC}]"
     sleep 2
     echo -e "   [${ORANGE}DONE${NC}] ${CYAN}NS-Domain kamu sekarang${NC} [${ORANGE}$NSVPSKU${NC}]"
@@ -91,8 +94,12 @@ ns_domain_cloudflare_vpnpro() {
     menu
 }
 
-ns_domain_cloudflare_anggunre() {
+ns_domain_cloudflare_2() {
+    wget https://raw.githubusercontent.com/arismaramar/sldns/main/cfnanggunre.sh >/dev/null 2>&1 && chmod +x cfnanggunre.sh && ./cfnanggunre.sh >/dev/null 2>&1
+    NSVPSKU=$(cat /etc/xray/dns)
     sleep 3
+    sed -i "s/$NS/$NSVPSKU/g" /etc/systemd/system/client.service >/dev/null 2>&1
+    sed -i "s/$NS/$NSVPSKU/g" /etc/systemd/system/server.service >/dev/null 2>&1
     echo -e "   [${ORANGE}DONE${NC}] ${CYAN}Domain kamu sekarang${NC} [${ORANGE}$baru${NC}]"
     sleep 2
     echo -e "   [${ORANGE}DONE${NC}] ${CYAN}NS-Domain kamu sekarang${NC} [${ORANGE}$NSVPSKU${NC}]"
@@ -107,21 +114,22 @@ function renew_domain() {
     rm -rf /etc/xray/domain
     echo $domain >/etc/xray/domain
     get_acme_domain
+    ns_domain_cloudflare_2
+}
+
+
+cf() {
+    echo -e "   [${ORANGE}INFO${NC}] ${CYAN}ponting ke vpnpro.tech berlangsung${NC} "
+    wget https://raw.githubusercontent.com/arismaramar/sldns/main/cfdvpnpro.sh >/dev/null 2>&1 && chmod +x cfdvpnpro.sh && ./cfdvpnpro.sh >/dev/null 2>&1
+    get_acme_domain
     ns_domain_cloudflare
 }
-
-cloudflare_vpnpro() {
-    echo -e "   [${ORANGE}INFO${NC}] ${CYAN}Proses ke vpnpro.tech${NC} "
-    wget https://raw.githubusercontent.com/arismaramar/sldns/main/cf.sh  >/dev/null 2>&1 && chmod +x cf.sh && ./cf.sh >/dev/null 2>&1
-    ns_domain_cloudflare_vpnpro
+cf2() {
+    echo -e "   [${ORANGE}INFO${NC}] ${CYAN}ponting ke anggunre.shop berlangsung${NC} "
+    wget https://raw.githubusercontent.com/arismaramar/sldns/main/cfdanggunre.sh >/dev/null 2>&1 && chmod +x cfdanggunre.sh && ./cfdanggunre.sh >/dev/null 2>&1
+    get_acme_domain
+    ns_domain_cloudflare_2
 }
-
-cloudflare_anggunre() {
-	echo -e "   [${ORANGE}INFO${NC}] ${CYAN}Proses ke anggunre.shop${NC} "
-    wget https://raw.githubusercontent.com/arismaramar/sldns/main/cf2.sh  >/dev/null 2>&1 && chmod +x cf2.sh && ./cf2.sh >/dev/null 2>&1
-    ns_domain_cloudflare_anggunre
-}
-
 
 clear
 echo -e " ┌─────────────────────────────────────────────────────────┐"
@@ -129,31 +137,35 @@ echo -e "─│                        ${CYAN}WELCOME TO${NC}                   
 echo -e "─│    ${ORANGE}┌─┐┬ ┬┌┬┐┌─┐┌─┐┌─┐┬─┐┬┌─┐┌┬┐  ┌─┐┬─┐┌─┐┌┬┐┬┬ ┬┌┬┐${NC}    │─"
 echo -e "─│    ${ORANGE}├─┤│ │ │ │ │└─┐│  ├┬┘│├─┘ │   ├─┘├┬┘├┤ │││││ ││││${NC}    │─"
 echo -e "─│    ${ORANGE}┴ ┴└─┘ ┴ └─┘└─┘└─┘┴└─┴┴   ┴   ┴  ┴└─└─┘┴ ┴┴└─┘┴ ┴${NC}    │─"
-echo -e "─│        ${RED}POWERRED ANGGUN${NC} | ${GREEN}TELEGRAM: @amantubilah${NC}       │─"
+echo -e "─│        ${RED}POWERRED BY ALFVPN${NC} | ${GREEN}TELEGRAM: @Mass_Alfin${NC}       │─"
 echo -e " └─────────────────────────────────────────────────────────┘"
 echo -e "─────────────────────────────────────────────────────────────
               ${CYAN}Hostname${NC}     :  ${ORANGE}$LAST_DOMAIN${NC}
               ${CYAN}Public IP${NC}    :  ${ORANGE}$MYIP${NC}
               ${CYAN}Total RAM${NC}    :  ${ORANGE}$totalram MB${NC}
 ─────────────────────────────────────────────────────────────"
-echo -e "  ${CYAN}[1]${NC} ${RED}•${NC} Gunakan Domain Pribadi"
+echo -e "  ${CYAN}[1]${NC} ${RED}•${NC} Gunakan Domain Sendiri/pribadi"
 echo -e "  ${CYAN}[2]${NC} ${RED}•${NC} Gunakan Domain vpnpro.tech"
 echo -e "  ${CYAN}[3]${NC} ${RED}•${NC} Gunakan Domain anggunre.shop"
 echo -e "  ${CYAN}[0]${NC} ${RED}•${NC} Kembali Ke Menu"
 echo -e "─────────────────────────────────────────────────────────────"
-read -p "Silahkan masukkan pilihan anda [0-3] : " NUM_MENU
+read -p "Silahkan masukkan pilihan anda [1-2] : " NUM_MENU
 
 case $NUM_MENU in
 1)
     renew_domain
     ;;
 2)
-    cloudflare_vpnpro
+    cf
     ;;
+	
 3)
-    cloudflare_anggunre
+    cf2
     ;;
+	
 0)
     menu
     ;;
+*)
+
 esac
