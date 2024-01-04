@@ -78,4 +78,5 @@ RESULT=$(
 	--data '{"type":"NS","name":"'${NS_DOMAIN}'","content":"'${DAOMIN}'","proxied":false}'
 )
 echo $NS_DOMAIN >/etc/xray/dns
+echo "dns kamu adalah : $NS_DOMAIN"
 rm -f /root/cfnanggunre.sh
