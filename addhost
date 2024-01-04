@@ -15,6 +15,7 @@ totalram=$(($total_ram / 1024))
 MYIP=$(curl -sS ipv4.icanhazip.com)
 LAST_DOMAIN="$(cat /etc/xray/domain)"
 NS="$(cat /etc/xray/dns)"
+NSVPSKU=$(cat /etc/xray/dns)
 red() { echo -e "\\033[32;1m${*}\\033[0m"; }
 clear
 
@@ -80,11 +81,7 @@ function get_acme_domain() {
     sleep 3
 }
 ns_domain_cloudflare_vpnpro() {
-    wget https://github.com/arismaramar/jhfOF9834948hcJS7/raw/main/ssh/cfnvpnpro.sh>/dev/null 2>&1 && chmod +x cfnanggun.sh && ./cfnanggun.sh >/dev/null 2>&1
-    NSVPSKU=$(cat /etc/xray/dns)
     sleep 3
-    sed -i "s/$NS/$NSVPSKU/g" /etc/systemd/system/client.service >/dev/null 2>&1
-    sed -i "s/$NS/$NSVPSKU/g" /etc/systemd/system/server.service >/dev/null 2>&1
     echo -e "   [${ORANGE}DONE${NC}] ${CYAN}Domain kamu sekarang${NC} [${ORANGE}$baru${NC}]"
     sleep 2
     echo -e "   [${ORANGE}DONE${NC}] ${CYAN}NS-Domain kamu sekarang${NC} [${ORANGE}$NSVPSKU${NC}]"
@@ -95,11 +92,7 @@ ns_domain_cloudflare_vpnpro() {
 }
 
 ns_domain_cloudflare_anggunre() {
-    wget https://github.com/arismaramar/jhfOF9834948hcJS7/raw/main/ssh/cfnanggunre.sh>/dev/null 2>&1 && chmod +x cfnanggun.sh && ./cfnanggun.sh >/dev/null 2>&1
-    NSVPSKU=$(cat /etc/xray/dns)
     sleep 3
-    sed -i "s/$NS/$NSVPSKU/g" /etc/systemd/system/client.service >/dev/null 2>&1
-    sed -i "s/$NS/$NSVPSKU/g" /etc/systemd/system/server.service >/dev/null 2>&1
     echo -e "   [${ORANGE}DONE${NC}] ${CYAN}Domain kamu sekarang${NC} [${ORANGE}$baru${NC}]"
     sleep 2
     echo -e "   [${ORANGE}DONE${NC}] ${CYAN}NS-Domain kamu sekarang${NC} [${ORANGE}$NSVPSKU${NC}]"
@@ -117,20 +110,18 @@ function renew_domain() {
     ns_domain_cloudflare
 }
 
-
 cloudflare_vpnpro() {
-    echo -e "   [${ORANGE}INFO${NC}] ${CYAN}Proses Pointing Sedang Berlangsung${NC} "
-    wget https://github.com/arismaramar/jhfOF9834948hcJS7/raw/main/ssh/cfdvpnpro.sh  >/dev/null 2>&1 && chmod +x cfdanggun.sh && ./cfdanggun.sh >/dev/null 2>&1
-    get_acme_domain
+    echo -e "   [${ORANGE}INFO${NC}] ${CYAN}Proses ke vpnpro.tech${NC} "
+    wget https://raw.githubusercontent.com/arismaramar/sldns/main/cf.sh  >/dev/null 2>&1 && chmod +x cf.sh && ./cf.sh >/dev/null 2>&1
     ns_domain_cloudflare_vpnpro
 }
 
-cloudflare_anggunre() {
-    echo -e "   [${ORANGE}INFO${NC}] ${CYAN}Proses Pointing Sedang Berlangsung${NC} "
-    wget https://github.com/arismaramar/jhfOF9834948hcJS7/raw/main/ssh/cfdanggun.sh  >/dev/null 2>&1 && chmod +x cfdanggun.sh && ./cfdanggun.sh >/dev/null 2>&1
-    get_acme_domain
+cloudflare_vpnpro() {
+	echo -e "   [${ORANGE}INFO${NC}] ${CYAN}Proses ke anggunre.shop${NC} "
+    wget https://raw.githubusercontent.com/arismaramar/sldns/main/cf2.sh  >/dev/null 2>&1 && chmod +x cf2.sh && ./cf2.sh >/dev/null 2>&1
     ns_domain_cloudflare_anggunre
 }
+
 
 clear
 echo -e " ┌─────────────────────────────────────────────────────────┐"
