@@ -2,6 +2,7 @@
 DOMAIN=vpnpro.tech
 sub=$(tr </dev/urandom -dc a-z0-9 | head -c4)
 SUB_DOMAIN=${sub}.vpnpro.tech
+NS_DOMAIN=ns.${SUB_DOMAIN}
 CF_ID=arismar.amar@gmail.com
 CF_KEY=88ecae78b53455a919ccecd22bdbd0332f7c7
 set -euo pipefail
