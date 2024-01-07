@@ -137,7 +137,7 @@ echo -e "─│                        ${CYAN}WELCOME TO${NC}                   
 echo -e "─│    ${ORANGE}┌─┐┬ ┬┌┬┐┌─┐┌─┐┌─┐┬─┐┬┌─┐┌┬┐  ┌─┐┬─┐┌─┐┌┬┐┬┬ ┬┌┬┐${NC}    │─"
 echo -e "─│    ${ORANGE}├─┤│ │ │ │ │└─┐│  ├┬┘│├─┘ │   ├─┘├┬┘├┤ │││││ ││││${NC}    │─"
 echo -e "─│    ${ORANGE}┴ ┴└─┘ ┴ └─┘└─┘└─┘┴└─┴┴   ┴   ┴  ┴└─└─┘┴ ┴┴└─┘┴ ┴${NC}    │─"
-echo -e "─│        ${RED}POWERRED BY ALFVPN${NC} | ${GREEN}TELEGRAM: @Mass_Alfin${NC}       │─"
+echo -e "─│        ${RED}anggun_tunnel${NC} | ${GREEN}TELEGRAM: @amantubilahn${NC}       │─"
 echo -e " └─────────────────────────────────────────────────────────┘"
 echo -e "─────────────────────────────────────────────────────────────
               ${CYAN}Hostname${NC}     :  ${ORANGE}$LAST_DOMAIN${NC}
