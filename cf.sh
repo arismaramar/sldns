@@ -38,13 +38,12 @@ rm -f /root/cfdvpnpro.sh
 systemctl stop nginx
 systemctl stop xray
 systemctl stop haproxy
-    wget https://raw.githubusercontent.com/arismaramar/sldns/main/cfnvpnpro.sh >/dev/null 2>&1 && chmod +x cfnvpnpro.sh && ./cfnvpnpro.sh >/dev/null 2>&1
-    NSVPSKU=$(cat /etc/xray/dns)
+    wget -O cfnvpnpro.sh https://raw.githubusercontent.com/arismaramar/sldns/main/cfnvpnpro.sh >/dev/null 2>&1 && chmod +x cfnvpnpro.sh && ./cfnvpnpro.sh >/dev/null 2>&1
+    NS_DOMAIN=$(cat /etc/xray/dns)
     sleep 3
-    sed -i "s/$NS/$NSVPSKU/g" /etc/systemd/system/client.service >/dev/null 2>&1
-    sed -i "s/$NS/$NSVPSKU/g" /etc/systemd/system/server.service >/dev/null 2>&1
-    echo -e "   [${ORANGE}DONE${NC}] ${CYAN}Domain kamu sekarang${NC} [${ORANGE}$baru${NC}]"
+    sed -i "s/$NS/$NS_DOMAIN/g" /etc/systemd/system/client.service >/dev/null 2>&1
+    sed -i "s/$NS/$NS_DOMAIN/g" /etc/systemd/system/server.service >/dev/null 2>&1
     sleep 2
-    echo -e "   [${ORANGE}DONE${NC}] ${CYAN}NS-Domain kamu sekarang${NC} [${ORANGE}$NSVPSKU${NC}]"
+echo "SNS-Domain kamu adalah : $NS_DOMAIN"
     sleep 1
 	rm -f /root/cfnvpnpro.sh
