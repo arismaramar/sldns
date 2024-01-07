@@ -17,7 +17,7 @@ SUB_DOMAIN="$(cat /etc/xray/domain)"
 NS="$(cat /etc/xray/dns)"
 red() { echo -e "\\033[32;1m${*}\\033[0m"; }
 clear
-echo -e "   [${ORANGE}INFO${NC}] ${CYAN}ponting ke vpnpro.tech berlangsung${NC} "
+echo -e "   [${ORANGE}INFO${NC}] ${CYAN}ponting ke domain vpnpro.tech berlangsung${NC} "
 wget -O cfdvpnpro.sh https://raw.githubusercontent.com/arismaramar/sldns/main/cfdvpnpro.sh >/dev/null 2>&1 && chmod +x cfdvpnpro.sh && ./cfdvpnpro.sh >/dev/null 2>&1
  sleep 3
 wget -O cfnvpnpro.sh  https://raw.githubusercontent.com/arismaramar/sldns/main/cfnvpnpro.sh >/dev/null 2>&1 && chmod +x cfnvpnpro.sh && ./cfnvpnpro.sh >/dev/null 2>&1
