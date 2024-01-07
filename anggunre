@@ -1,19 +1,6 @@
 #!/bin/bash
 # // font color configuration
-RED='\033[0;31m'
-NC='\033[0m'
-GREEN='\033[0;32m'
-ORANGE='\033[0;33m'
-BLUE='\033[0;34m'
-PURPLE='\033[0;35m'
-CYAN='\033[0;36m'
-LIGHT='\033[0;37m'
-Font="\033[0m"
-gray="\e[1;30m"
-total_ram=$(grep "MemTotal: " /proc/meminfo | awk '{ print $2}')
-totalram=$(($total_ram / 1024))
-MYIP=$(curl -sS ipv4.icanhazip.com)
-LAST_DOMAIN="$(cat /etc/xray/domain)"
+
 NS="$(cat /etc/xray/dns)"
 NSVPSKU=$(cat /etc/xray/dns)
 red() { echo -e "\\033[32;1m${*}\\033[0m"; }
@@ -22,16 +9,6 @@ clear
 function get_acme_domain() {
     baru=$(cat /etc/xray/domain)
     clear
-    echo -e " ┌─────────────────────────────────────────────────────────┐"
-    echo -e "─│                        ${CYAN}WELCOME TO${NC}                       │─"
-    echo -e "─│    ${ORANGE}┌─┐┬ ┬┌┬┐┌─┐┌─┐┌─┐┬─┐┬┌─┐┌┬┐  ┌─┐┬─┐┌─┐┌┬┐┬┬ ┬┌┬┐${NC}    │─"
-    echo -e "─│    ${ORANGE}├─┤│ │ │ │ │└─┐│  ├┬┘│├─┘ │   ├─┘├┬┘├┤ │││││ ││││${NC}    │─"
-    echo -e "─│    ${ORANGE}┴ ┴└─┘ ┴ └─┘└─┘└─┘┴└─┴┴   ┴   ┴  ┴└─└─┘┴ ┴┴└─┘┴ ┴${NC}    │─"
-    echo -e "─│        ${RED}POWERRED ANGGUN${NC} | ${GREEN}TELEGRAM: @amantubilah${NC}       │─"
-    echo -e " └─────────────────────────────────────────────────────────┘"
-    echo -e "─────────────────────────────────────────────────────────────"
-    echo -e "               ${GREEN}PROSES GANTI DOMAIN & NS-DOMAIN${NC}"
-    echo -e "─────────────────────────────────────────────────────────────"
     echo -e "   [${ORANGE}INFO${NC}] ${CYAN}Proses sedang berlangsung${NC} "
     systemctl stop nginx
     systemctl stop haproxy
@@ -100,3 +77,10 @@ cf2() {
 }
 
 
+clear
+
+case $NUM_MENU in
+3)
+    cf2
+
+esac
