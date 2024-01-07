@@ -13,7 +13,6 @@ gray="\e[1;30m"
 total_ram=$(grep "MemTotal: " /proc/meminfo | awk '{ print $2}')
 totalram=$(($total_ram / 1024))
 MYIP=$(curl -sS ipv4.icanhazip.com)
-LAST_DOMAIN="$(cat /etc/xray/domain)"
 NS="$(cat /etc/xray/dns)"
 red() { echo -e "\\033[32;1m${*}\\033[0m"; }
 clear
@@ -24,4 +23,4 @@ wget -O cfnvpnpro.sh  https://raw.githubusercontent.com/arismaramar/sldns/main/c
 sleep 3
 
 echo "Subdomain kamu adalah : $SUB_DOMAIN"
-echo "NS_DOMAIN kamu adalah : $NS_DOMAIN"
+echo "NS_DOMAIN kamu adalah : $NS"
