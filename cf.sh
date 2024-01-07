@@ -13,6 +13,7 @@ gray="\e[1;30m"
 total_ram=$(grep "MemTotal: " /proc/meminfo | awk '{ print $2}')
 totalram=$(($total_ram / 1024))
 MYIP=$(curl -sS ipv4.icanhazip.com)
+SUB_DOMAIN="$(cat /etc/xray/domain)"
 NS="$(cat /etc/xray/dns)"
 red() { echo -e "\\033[32;1m${*}\\033[0m"; }
 clear
